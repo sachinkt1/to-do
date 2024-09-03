@@ -1,0 +1,152 @@
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Container styling */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Header styling */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container h1 {
+    font-size: 24px;
+    color: #444;
+    text-align: center;
+    font-weight: 300;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 1rem;
+    margin-top: 1rem;
+}
+
+.input-wrapper input {
+    padding: 0.5rem 0.3rem;
+    max-width: 300px;
+    width: 100%;
+}
+
+#add-task {
+    padding: 0.65rem;
+}
+
+/* Task list styling */
+ul#task-list {
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0;
+    justify-content: center;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+ul#task-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+ul#task-list li.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+ul#task-list li input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Button styling */
+button {
+    padding: 8px 16px;
+    background-color: #007BFF;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button.delete-task {
+    background-color: #dc3545;
+}
+
+button.delete-task:hover {
+    background-color: #c82333;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+form input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+form button {
+    flex-shrink: 0;
+}
+
+#show-all-tasks {
+    margin-top: 20px;
+    max-width: 125px;
+    width: 100%;
+    padding: 0.7rem;
+    margin-left: 5rem;
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    form input[type="text"] {
+        margin-right: 5px;
+    }
+
+    form button {
+        padding: 10px 12px;
+    }
+}

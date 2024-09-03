@@ -6,13 +6,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Task Manager</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>Task Manager</h1>
-        <input type="text" id="task-title" placeholder="Enter task">
-        <button id="add-task">Add Task</button>
+        <div class="input-wrapper">
+            <input type="text" id="task-title" placeholder="Enter task">
+            <button id="add-task">Add Task</button>
+        </div>
         <ul id="task-list">
             @foreach($tasks as $task)
                 <li data-id="{{ $task->id }}">
