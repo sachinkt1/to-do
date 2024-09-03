@@ -68,21 +68,30 @@
                 });
             });
 
-            $(document).on('change', '.mark-complete', function() {
-                let li = $(this).closest('li');
-                let id = li.data('id');
-                let completed = $(this).is(':checked');
+            $(document).ready(function() {
+                // Function to handle the task completion checkbox click
+                $(document).on('change', '.mark-complete', function() {
+                    let li = $(this).closest('li');
+                    let id = li.data('id');
+                    let completed = $(this).is(':checked');
 
-                $.ajax({
-                    url: `/tasks/${id}`,
-                    type: 'PUT',
-                    data: {
-                        _token: $('meta[name="csrf-token"]').attr('content'),
-                        completed: completed
-                    },
-                    success: function() {
-                        li.toggleClass('completed', completed);
-                    }
+                    // AJAX request to update the task status
+                    $.ajax({
+                        url: `/tasks/${id}`,
+                        type: 'PUT',
+                        data: {
+                            _token: $('meta[name="csrf-token"]').attr('content'),
+                            completed: completed
+                        },
+                        success: function() {
+                            // If the task is marked as completed, remove it from the list
+                            if (completed) {
+                                li.fadeOut(300, function() {
+                                    $(this).remove();
+                                });
+                            }
+                        }
+                    });
                 });
             });
 

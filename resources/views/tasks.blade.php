@@ -18,6 +18,7 @@
                 <li data-id="{{ $task->id }}">
                     <input type="checkbox" class="mark-complete" {{ $task->completed ? 'checked' : '' }}>
                     <span>{{ $task->title }}</span>
+                    
                     <button class="delete-task">Delete</button>
                 </li>
             @endforeach
