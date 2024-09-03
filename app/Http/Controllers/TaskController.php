@@ -62,10 +62,21 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        // Find the task by ID
+        $task = Task::findOrFail($id);
+
+        // Update the 'completed' status based on the request data
+        $task->completed = $request->input('completed');
+
+        // Save the updated task
+        $task->save();
+
+        // Return a successful response
+        return response()->json(['success' => true]);
     }
+
 
     /**
      * Remove the specified resource from storage.
