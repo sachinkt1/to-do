@@ -95,22 +95,28 @@
                 });
             });
 
-            $('#show-all-tasks').click(function() {
-                $.ajax({
-                    url: '{{ route('tasks.index') }}',
-                    type: 'GET',
-                    success: function(tasks) {
-                        $('#task-list').empty();
-                        tasks.forEach(task => {
-                            $('#task-list').append(`
-                                <li data-id="${task.id}">
-                                    <input type="checkbox" class="mark-complete" ${task.completed ? 'checked' : ''}>
-                                    <span>${task.title}</span>
-                                    <button class="delete-task">Delete</button>
-                                </li>
-                            `);
-                        });
-                    }
+            $(document).ready(function() {
+                // Function to handle "Show All Tasks" button click
+                $('#show-all-tasks').click(function() {
+                    $.ajax({
+                        url: '{{ route('tasks.index') }}',
+                        type: 'GET',
+                        success: function(tasks) {
+                            // Clear the current task list
+                            $('#task-list').empty();
+
+                            // Append all tasks (both completed and non-completed)
+                            tasks.forEach(task => {
+                                $('#task-list').append(`
+                                    <li data-id="${task.id}">
+                                        <input type="checkbox" class="mark-complete" ${task.completed ? 'checked' : ''}>
+                                        <span>${task.title}</span>
+                                        <button class="delete-task">Delete</button>
+                                    </li>
+                                `);
+                            });
+                        }
+                    });
                 });
             });
         });

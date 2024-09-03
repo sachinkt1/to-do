@@ -10,12 +10,17 @@ class TaskController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        // Fetch all tasks from the database
+        // Fetch all tasks
         $tasks = Task::all();
 
-        // Return the view with the tasks data
+        // If the request is AJAX, return the tasks as JSON
+        if ($request->ajax()) {
+            return response()->json($tasks);
+        }
+
+        // Otherwise, return the view with the tasks data
         return view('tasks.index', compact('tasks'));
     }
 
@@ -67,8 +72,8 @@ class TaskController extends Controller
         // Find the task by ID
         $task = Task::findOrFail($id);
 
-        // Update the 'completed' status based on the request data
-        $task->completed = $request->input('completed');
+        // Convert the boolean to an integer (true/false -> 1/0)
+        $task->completed = $request->input('completed') ? 1 : 0;
 
         // Save the updated task
         $task->save();
@@ -76,7 +81,6 @@ class TaskController extends Controller
         // Return a successful response
         return response()->json(['success' => true]);
     }
-
 
     /**
      * Remove the specified resource from storage.
